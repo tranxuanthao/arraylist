@@ -1,0 +1,72 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class Team  implements Comparator<Student>{
+	private ArrayList<Student>listStudent=new ArrayList<Student>();
+	public void initTeam() {
+		listStudent.add(new Student("thao", 0, 7, 5));
+		listStudent.add(new Student("thanh", 1, 5, 7));
+		listStudent.add(new Student("thu", 2, 9, 5));
+
+	}
+	public void increaseScope() {
+		int temp=0;
+		for(int i=0;i<listStudent.size();i++) {
+			if(listStudent.get(i).getName().equals("thao")||listStudent.get(i).getName().equals("thanh")) {
+				temp=listStudent.get(i).getMathScope()+3;
+				if(temp>10) {
+					temp=10;
+				}listStudent.get(i).setMathScope(temp);
+			}
+		}
+	}@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return  "Team{" +
+                "listStudents=" + listStudent +
+                '}';
+	}
+	public void find() {
+		for(int i=0;i<listStudent.size();i++) {
+			if(listStudent.get(i).getMathScope()>5) {
+				System.out.println("DS hoc sinh co diem lon hon 5:"+listStudent.get(i).getName()+"\t"+listStudent.get(i).getMathScope());
+			}
+		}
+	}
+	public void sapxep() {
+		Collections.sort(listStudent,new Team());
+		for(int i=0;i<listStudent.size();i++) {
+			System.out.println("Danh sach:"+listStudent.get(i).getName()+"\t"+listStudent.get(i).getMathScope());
+		}
+	}
+	@Override
+	public int compare(Student o1, Student o2) {
+		if(o1.getMathScope()>o2.getMathScope())
+			return 1;
+		else if(o1.getMathScope()<o2.getMathScope())
+			return -1;
+		return 0;
+	}
+	public void sosanh() {
+		
+		for(int i=0;i<listStudent.size();i++) {
+			for(int j=1;j<listStudent.size();j++) {
+				if(listStudent.get(i).getMathScope()>listStudent.get(j).getMathScope()) {
+					System.out.println("hoc sinh"+listStudent.get(i).getName()+"gioi hon"+listStudent.get(j).getName());
+					
+				}
+				else if(listStudent.get(i).getMathScope()==listStudent.get(j).getMathScope()) {
+					if((listStudent.get(i).getMathScope()+listStudent.get(i).getEngScope())>(listStudent.get(j).getMathScope()+listStudent.get(j).getEngScope())) {
+						System.out.println("hoc sinh"+listStudent.get(i).getName()+"gioi hon"+listStudent.get(j).getName());
+					}
+				}
+				else {
+					System.out.println("hoc sinh"+listStudent.get(j).getName()+"gioi hon"+listStudent.get(i).getName());
+				}
+			}
+			
+		}
+	}
+}
+

@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class DemoMain {
+
+	public static void main(String[] args) {
+		
+		Team team=new Team();
+		team.initTeam();
+		System.out.println("danh sach ban dau:");
+		System.out.println(team);
+		team.increaseScope();
+		System.out.println("danh sach sau nang diem:");
+		System.out.println(team);
+		team.find();
+		System.out.println("danh sach sau khi sap xep:");
+		team.sapxep();
+		System.out.println("----------------");
+		team.sosanh();
+		
+	}
+
+}
